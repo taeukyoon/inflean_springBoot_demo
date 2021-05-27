@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
+
 class MemoryMemberRepositoryTest {
 
     MemoryMemberRepository repository = new MemoryMemberRepository();
@@ -24,37 +26,43 @@ class MemoryMemberRepositoryTest {
         repository.save(member);
 
         Member result = repository.findById(member.getId()).get();
-        Assertions.assertThat(member).isEqualTo(result);
+        assertThat(member).isEqualTo(result);
     }
 
     @Test
     public void findByName() {
+
+        //임의문자 넣어주기
         Member member1 = new Member();
-        member1.setName("spring1");
+        member1.setName("spring");
         repository.save(member1);
 
         Member member2 = new Member();
-        member2.setName("spring2");
+        member2.setName("hihi");
         repository.save(member2);
 
-        Member result = repository.findByName("spring1").get();
-        Assertions.assertThat(result).isEqualTo(member1);
+        //when
+        Member result = repository.findByName("hihi").get();
+        //then
+        assertThat(member2).isEqualTo(result);
 
     }
     @Test
     public void findAll() {
+
         Member member1 = new Member();
-        member1.setName("spring1");
+        member1.setName("spring");
         repository.save(member1);
 
         Member member2 = new Member();
-        member2.setName("spring2");
+        member2.setName("hihi");
         repository.save(member2);
 
+        //when
         List<Member> result = repository.findAll();
 
-        Assertions.assertThat(result.size()).isEqualTo(2);
-
+        //then
+        assertThat(result.size()).isEqualTo(2);
     }
 
 }

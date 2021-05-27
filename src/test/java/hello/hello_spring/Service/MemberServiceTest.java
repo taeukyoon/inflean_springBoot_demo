@@ -11,9 +11,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceTest {
 
-    MemberService memberService = new MemberService();
-    MemoryMemberRepository memberRepository = new MemoryMemberRepository();
+    MemberService memberService;
+    MemoryMemberRepository memberRepository;
 
+    //테스트전에 호출. 새로운 객체 생성
     @BeforeEach
     public void beforeEach() {
         memberRepository = new MemoryMemberRepository();
@@ -28,6 +29,7 @@ class MemberServiceTest {
 
     @Test
     void 회원가입() {
+
         //given
         Member member = new Member();
         member.setName("hello");
@@ -42,6 +44,7 @@ class MemberServiceTest {
 
     @Test
     public void 중복회원예외() {
+
         //given
         Member member1 = new Member();
         member1.setName("hi");
