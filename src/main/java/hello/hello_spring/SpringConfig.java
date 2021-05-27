@@ -1,5 +1,6 @@
 package hello.hello_spring;
 
+
 import hello.hello_spring.Service.MemberService;
 import hello.hello_spring.repository.JpaMemberRepository;
 import hello.hello_spring.repository.MemberRepository;
@@ -21,6 +22,8 @@ public class SpringConfig {
     public MemberService memberService() {
         return new MemberService(memberRepository);
     }
+
+
 
 //    @Bean
 //    public MemberRepository memberRepository() {
